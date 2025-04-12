@@ -15,7 +15,7 @@ export default async function RecipePage({ params }) {
                     alt={recipe.name}
                     width={800}
                     height={400}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-100 object-cover"
                 />
                 <div className="p-6">
                     <h1 className="text-3xl font-bold text-gray-800">{recipe.name}</h1>
