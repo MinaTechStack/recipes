@@ -19,7 +19,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white text-black p-4 shadow-xl">
       <div className='container mx-auto max-w-[1240px]'>
         <div className="flex justify-between items-center">
-          <Link href="/"><h1 className="text-2xl font-bold">Recipes</h1></Link>
+          <Link href="/"><h1 className="text-2xl font-bold">DishDelight</h1></Link>
 
           <nav className="hidden md:flex space-x-4">
             {menuItem.map((item, i) => (
