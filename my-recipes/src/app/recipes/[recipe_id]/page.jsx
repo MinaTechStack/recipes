@@ -7,6 +7,8 @@ export default async function RecipePage({ params }) {
     const id = params.recipe_id
     const recipe = await fetchRecipeById(id)
 
+
+     
     return (
         <div className="min-h-screen bg-gray-100 p-6 pt-[65px]">
             <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">

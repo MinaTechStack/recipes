@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Image from 'next/image';
 import Card from '@/components/Card';
 import { fetchRecipe } from '@/library/api-call';
@@ -7,12 +7,10 @@ import Link from 'next/link';
 
 export default async function Homepage() {
   const recipes = await fetchRecipe();
+  console.log(recipes)
   const featureRecipes = recipes.slice(0, 4);
   const mostLikedRecipes = recipes.slice(20, 24);
   const topRatingRecipes = recipes.slice(8, 12);
-
-
-
 
   return (
     <div className='w-full relative pt-[64px]'>
@@ -32,17 +30,17 @@ export default async function Homepage() {
         </div>
       </section>
 
-
-
       <div className='pt-65px'>
         <RecipeSlider />
       </div>
+
       <div className='container mx-auto max-w-[1240px]'>
+        {/* Sweet Treat Section */}
         <section className="w-full py-12 bg-white">
           <div className="max-w-[1240px] mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
             <div className="w-full h-full">
               <Image
-                src="https://images.unsplash.com/photo-1733860531621-34d137d72c5e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // use the path where you saved the image (public/u-1.jpg)
+                src="https://images.unsplash.com/photo-1733860531621-34d137d72c5e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Mac and Cheese"
                 width={600}
                 height={400}
@@ -61,58 +59,73 @@ export default async function Homepage() {
             </div>
           </div>
         </section>
+
+        {/* Feature Recipes */}
         <section>
           <h2 className='text-3xl font-bold my-5 text-teal-900'>What We're Craving</h2>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 p-3 px-3 '>
-            {
-              featureRecipes.map((recipe) => {
-                return (
-                  <div className='transform transition-transform duration-300 hover:scale-105'>
-                    < Card key={recipe.id} name={recipe.name} image={recipe.image} servings={recipe.servings} cookTimeMinutes={recipe.cookTimeMinutes} mealType={recipe.mealType} />
-                  </div>
-                )
-              }
-              )
-            }
-
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-3'>
+            {featureRecipes.map((recipe) => (
+              <Link href={`/recipes/${recipe.id}`} key={recipe.id}>
+                <div className='transform transition-transform duration-300 hover:scale-105'>
+                  {/* Explicitly passing props */}
+                  <Card
+                    name={recipe.name}
+                    image={recipe.image}
+                    servings={recipe.servings}
+                    cookTimeMinutes={recipe.cookTimeMinutes}
+                    mealType={recipe.mealType}
+                    id={recipe.id} // Passing the id prop explicitly
+                  />
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
 
+        {/* Most Liked Recipes */}
         <section>
           <h2 className='text-3xl font-bold my-5 text-teal-900'>Fan Favorites</h2>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 p-3 px-3 '>
-            {
-              mostLikedRecipes.map((recipe) => {
-                return (
-                  <div className='transform transition-transform duration-300 hover:scale-105'>
-                    < Card key={recipe.id} name={recipe.name} image={recipe.image} servings={recipe.servings} cookTimeMinutes={recipe.cookTimeMinutes} mealType={recipe.mealType} />
-                  </div>
-                )
-              }
-              )
-            }
-
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-3'>
+            {mostLikedRecipes.map((recipe) => (
+              <Link href={`/recipes/${recipe.id}`} key={recipe.id}>
+              <div className='transform transition-transform duration-300 hover:scale-105'>
+                {/* Explicitly passing props */}
+                <Card
+                  name={recipe.name}
+                  image={recipe.image}
+                  servings={recipe.servings}
+                  cookTimeMinutes={recipe.cookTimeMinutes}
+                  mealType={recipe.mealType}
+                  id={recipe.id} // Passing the id prop explicitly
+                />
+              </div>
+            </Link>
+            ))}
           </div>
         </section>
 
+        {/* Top Rating Recipes */}
         <section>
           <h2 className='text-3xl font-bold my-5 text-teal-900'>Don't Miss</h2>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 p-3 px-3'>
-            {
-              topRatingRecipes.map((recipe) => {
-                return (
-                  <div className='transform transition-transform duration-300 hover:scale-105'>
-                    < Card key={recipe.id} name={recipe.name} image={recipe.image} servings={recipe.servings} cookTimeMinutes={recipe.cookTimeMinutes} mealType={recipe.mealType} />
-                  </div>
-                )
-              }
-              )
-            }
-
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-3'>
+            {topRatingRecipes.map((recipe) => (
+              <Link href={`/recipes/${recipe.id}`} key={recipe.id}>
+              <div className='transform transition-transform duration-300 hover:scale-105'>
+                {/* Explicitly passing props */}
+                <Card
+                  name={recipe.name}
+                  image={recipe.image}
+                  servings={recipe.servings}
+                  cookTimeMinutes={recipe.cookTimeMinutes}
+                  mealType={recipe.mealType}
+                  id={recipe.id} // Passing the id prop explicitly
+                />
+              </div>
+            </Link>
+            ))}
           </div>
         </section>
       </div>
     </div>
   );
 }
-
