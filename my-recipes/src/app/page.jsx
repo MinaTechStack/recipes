@@ -35,7 +35,6 @@ export default async function Homepage() {
       </div>
 
       <div className='container mx-auto max-w-[1240px]'>
-        {/* Sweet Treat Section */}
         <section className="w-full py-12 bg-white">
           <div className="max-w-[1240px] mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
             <div className="w-full h-full">
@@ -60,7 +59,6 @@ export default async function Homepage() {
           </div>
         </section>
 
-        {/* Feature Recipes */}
         <section>
           <h2 className='text-3xl font-bold my-5 text-teal-900'>What We're Craving</h2>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-3'>
@@ -74,7 +72,7 @@ export default async function Homepage() {
                     servings={recipe.servings}
                     cookTimeMinutes={recipe.cookTimeMinutes}
                     mealType={recipe.mealType}
-                    id={recipe.id} // Passing the id prop explicitly
+                    id={recipe.id} 
                   />
                 </div>
               </Link>
@@ -82,7 +80,6 @@ export default async function Homepage() {
           </div>
         </section>
 
-        {/* Most Liked Recipes */}
         <section>
           <h2 className='text-3xl font-bold my-5 text-teal-900'>Fan Favorites</h2>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-3'>
@@ -96,7 +93,7 @@ export default async function Homepage() {
                   servings={recipe.servings}
                   cookTimeMinutes={recipe.cookTimeMinutes}
                   mealType={recipe.mealType}
-                  id={recipe.id} // Passing the id prop explicitly
+                  id={recipe.id} 
                 />
               </div>
             </Link>
@@ -104,21 +101,21 @@ export default async function Homepage() {
           </div>
         </section>
 
-        {/* Top Rating Recipes */}
+       
         <section>
           <h2 className='text-3xl font-bold my-5 text-teal-900'>Don't Miss</h2>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-3'>
             {topRatingRecipes.map((recipe) => (
               <Link href={`/recipes/${recipe.id}`} key={recipe.id}>
               <div className='transform transition-transform duration-300 hover:scale-105'>
-                {/* Explicitly passing props */}
+              
                 <Card
                   name={recipe.name}
                   image={recipe.image}
                   servings={recipe.servings}
                   cookTimeMinutes={recipe.cookTimeMinutes}
                   mealType={recipe.mealType}
-                  id={recipe.id} // Passing the id prop explicitly
+                  id={recipe.id} 
                 />
               </div>
             </Link>
